@@ -6,7 +6,7 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
        child: Image.asset('assets/images/Splash.png'),
        ),
