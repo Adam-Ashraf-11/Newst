@@ -15,6 +15,5 @@ class Newst extends StatelessWidget {
       theme: primaryAppTheme ,
       debugShowCheckedModeBanner: false,
       home: OnboardingView());
-    
   }
 }
