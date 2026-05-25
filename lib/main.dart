@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newst_app/core/theme/primary_app_theme.dart';
-import 'package:newst_app/features/onboarding/presentation/views/onboarding_view.dart';
+import 'package:newst_app/features/home/presentation/views/home_view.dart';
 
 void main() {
   runApp(const Newst());
@@ -14,6 +14,6 @@ class Newst extends StatelessWidget {
     return MaterialApp(
       theme: primaryAppTheme ,
       debugShowCheckedModeBanner: false,
-      home: OnboardingView());
+      home: HomeView());
   }
 }
