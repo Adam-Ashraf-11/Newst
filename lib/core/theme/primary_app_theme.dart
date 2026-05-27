@@ -23,7 +23,7 @@ ThemeData primaryAppTheme = ThemeData(
   //! ElevatedButton
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      backgroundColor: AppColors.red,
+      backgroundColor: AppColors.primaryColor,
       foregroundColor: Colors.white,
       minimumSize: const Size(double.infinity, 40),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
@@ -139,7 +139,7 @@ ThemeData primaryAppTheme = ThemeData(
   checkboxTheme: CheckboxThemeData(
     checkColor: WidgetStateProperty.all(Colors.white),
     fillColor: WidgetStateProperty.resolveWith((states) {
-      if (states.contains(WidgetState.selected)) return AppColors.red;
+      if (states.contains(WidgetState.selected)) return AppColors.primaryColor;
       return null;
     }),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
@@ -160,17 +160,18 @@ ThemeData primaryAppTheme = ThemeData(
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     backgroundColor: AppColors.light,
     type: BottomNavigationBarType.fixed,
-    selectedItemColor: AppColors.red,
-    unselectedItemColor: Color(0xff474747),
+    selectedItemColor: AppColors.primaryColor,
+    unselectedItemColor: Colors.black,
+    showUnselectedLabels: true
   ),
 
   //! TextButton Theme
   textButtonTheme: TextButtonThemeData(
-    style: TextButton.styleFrom(foregroundColor: AppColors.red),
+    style: TextButton.styleFrom(foregroundColor: AppColors.primaryColor),
   ),
 
   // //! Splash Factory Theme
-  // splashFactory: NoSplash.splashFactory,
+  splashFactory: NoSplash.splashFactory,
   // //! Icon Theme
   // primaryIconTheme: const IconThemeData(color: Colors.black),
   // //! popupMenu Theme

@@ -30,7 +30,9 @@ class HomeController extends ChangeNotifier {
       topHeadliesLoading = false;
       errorMessage = e.toString();
     }
-    notifyListeners();
+    if (hasListeners) {
+      notifyListeners();
+    }
   }
 
   void getEverything() async {
@@ -49,6 +51,8 @@ class HomeController extends ChangeNotifier {
       everythingLoading = false;
       errorMessage = e.toString();
     }
-    notifyListeners();
+    if (hasListeners) {
+      notifyListeners();
+    }
   }
 }

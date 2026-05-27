@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
-
+ static const routName = 'home';
   
   @override
   Widget build(BuildContext context) {

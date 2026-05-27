@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:newst_app/core/data_source/local_data/shared_preferences.dart';
+import 'package:newst_app/core/helper/ongenerate_route.dart';
 import 'package:newst_app/core/theme/primary_app_theme.dart';
-import 'package:newst_app/features/home/presentation/views/home_view.dart';
+import 'package:newst_app/features/splash/presentation/view/splash_view.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await PreferencesServer().init();
   runApp(const Newst());
 }
 
@@ -12,8 +16,11 @@ class Newst extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: primaryAppTheme ,
+      initialRoute: SplashView.routName,
+      onGenerateRoute: onGenerateRoutes,
+      theme: primaryAppTheme,
       debugShowCheckedModeBanner: false,
-      home: HomeView());
+      home: SplashView(),
+    );
   }
 }

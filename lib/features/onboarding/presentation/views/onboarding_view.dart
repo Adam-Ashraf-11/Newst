@@ -10,6 +10,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class OnboardingView extends StatelessWidget {
   const OnboardingView({super.key});
 
+  static const routName = 'onboarding';
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -24,7 +26,12 @@ class OnboardingView extends StatelessWidget {
                 builder: (BuildContext context, value, Widget? child) {
                   return value.isLastPage
                       ? SizedBox()
-                      : TextButton(onPressed: () {}, child: Text('Skip'));
+                      : TextButton(
+                          onPressed: () {
+                            controller.onboardingFinshed(context);
+                          },
+                          child: Text('Skip'),
+                        );
                 },
               ),
             ],
@@ -72,13 +79,12 @@ class OnboardingView extends StatelessWidget {
                           OnboardingController value,
                           Widget? child,
                         ) {
-                          return SizedBox(
-                          
-                            child: SmoothPageIndicator(
-                              controller: value.pageController, // PageController
-                              count: 3,
-                              axisDirection: Axis.horizontal,
-                              effect: SwapEffect(activeDotColor: AppColors.red),
+                          return SmoothPageIndicator(
+                            controller: value.pageController, // PageController
+                            count: 3,
+                            axisDirection: Axis.horizontal,
+                            effect: SwapEffect(
+                              activeDotColor: AppColors.primaryColor,
                             ),
                           );
                         },
@@ -93,6 +99,9 @@ class OnboardingView extends StatelessWidget {
                             duration: const Duration(milliseconds: 200),
                             curve: Curves.easeOut,
                           );
+                          if (value.isLastPage) {
+                            controller.onboardingFinshed(context);
+                          }
                         },
                       );
                     },
