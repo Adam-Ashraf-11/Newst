@@ -4,6 +4,7 @@ import 'package:newst_app/core/constant/app_colors.dart';
 import 'package:newst_app/core/widget/custom_eleveted_button.dart';
 import 'package:newst_app/core/widget/custom_text_form_feild.dart';
 import 'package:newst_app/features/auth/presentation/views/register_view.dart';
+import 'package:newst_app/features/auth/presentation/views/widgets/inkwell_an_account.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({super.key});
@@ -76,22 +77,13 @@ class LoginView extends StatelessWidget {
                     return null;
                   },
                 ),
-                Gap(16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Don\'t have an account?'),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, RegisterView.routName);
-                      },
-                      child: Text(
-                        'Register',
-                        style: TextStyle(color: AppColors.primaryColor),
-                      ),
-                    ),
-                  ],
+                Gap(20),
+                InkwellAnAccount(
+                  inkwell: 'Register',
+                  routName: RegisterView.routName,
+                  textMessage: 'Don\'t have an account?',
                 ),
+                Gap(40),
                 CustomElevetedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {}

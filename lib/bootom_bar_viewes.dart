@@ -4,14 +4,14 @@ import 'package:newst_app/features/home/presentation/views/home_view.dart';
 import 'package:newst_app/features/profile/presentation/views/profile_view.dart';
 import 'package:newst_app/features/search/search_view.dart';
 
-class MainViewes extends StatefulWidget {
-  const MainViewes({super.key});
+class BootomBarViews extends StatefulWidget {
+  const BootomBarViews({super.key});
 
   @override
-  State<MainViewes> createState() => _MainViewesState();
+  State<BootomBarViews> createState() => _BootomBarViewsState();
 }
 
-class _MainViewesState extends State<MainViewes> {
+class _BootomBarViewsState extends State<BootomBarViews> {
   int currentIndex = 0;
   List<Widget> views = [
     HomeView(),

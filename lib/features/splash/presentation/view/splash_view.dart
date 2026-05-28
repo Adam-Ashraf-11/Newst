@@ -24,7 +24,6 @@ class _SplashViewState extends State<SplashView> {
   void navigateMethod() {
     final bool onboarding = PreferencesServer().getBool(SharedConfig.cOnboarding) ?? false;
     final bool isLoggedin = PreferencesServer().getBool(SharedConfig.cLogedin) ?? false;
-
     Future.delayed(const Duration(seconds: 3), () {
       if (!onboarding) {
         Navigator.pushReplacementNamed(context, OnboardingView.routName);
@@ -41,7 +40,14 @@ class _SplashViewState extends State<SplashView> {
     return Scaffold(
       body: SizedBox(
         width: double.infinity,
-        child: Image.asset('assets/images/logo.png' ,),
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          
+          decoration: BoxDecoration(
+            image: DecorationImage(image: AssetImage('assets/images/news_papper.png'))
+          ),
+          child: Image.asset('assets/images/logo.png' ,)),
       ),
     );
   }

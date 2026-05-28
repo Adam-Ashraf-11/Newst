@@ -17,7 +17,7 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       case LoginView.routName:
       return MaterialPageRoute(builder: (_) =>  LoginView());
       case RegisterView.routName:
-      return MaterialPageRoute(builder: (_) => const RegisterView());
+      return MaterialPageRoute(builder: (_) =>  RegisterView());
     
 
     default:

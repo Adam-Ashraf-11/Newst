@@ -37,16 +37,16 @@ ThemeData primaryAppTheme = ThemeData(
     fillColor: Colors.white,
     contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
     border: OutlineInputBorder(
-      borderSide: const BorderSide(color: Colors.grey),
+      borderSide: const BorderSide(color : Colors.white),
     ),
     enabledBorder: OutlineInputBorder(
-      borderSide: const BorderSide(color: Colors.grey),
+      borderSide: const BorderSide(color: Colors.white),
     ),
     focusedBorder: OutlineInputBorder(
-      borderSide: const BorderSide(color: Colors.grey, width: 2),
+      borderSide: const BorderSide(color: Colors.white,),
     ),
     errorBorder: OutlineInputBorder(
-      borderSide: const BorderSide(color: Colors.red),
+      borderSide: const BorderSide(color: Colors.white),
     ),
   ),
   //! Text Theme
