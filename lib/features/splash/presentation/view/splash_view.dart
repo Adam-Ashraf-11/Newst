@@ -3,7 +3,6 @@ import 'package:newst_app/core/data_source/local_data/shared_config.dart';
 import 'package:newst_app/core/data_source/local_data/shared_preferences.dart';
 import 'package:newst_app/features/auth/presentation/views/login_view.dart';
 import 'package:newst_app/features/home/presentation/views/home_view.dart';
-import 'package:newst_app/features/onboarding/presentation/manager/onboarding_controller.dart';
 import 'package:newst_app/features/onboarding/presentation/views/onboarding_view.dart';
 
 class SplashView extends StatefulWidget {
@@ -42,7 +41,7 @@ class _SplashViewState extends State<SplashView> {
     return Scaffold(
       body: SizedBox(
         width: double.infinity,
-        child: Image.asset('assets/images/Splash.png'),
+        child: Image.asset('assets/images/logo.png' ,),
       ),
     );
   }
