@@ -3,7 +3,7 @@ class NewsModel {
   final String title;
   final String description;
   final String? urlToImage;
-  final String author;
+  final String? author;
   final String content;
   final String publishedAt;
   final String url;
@@ -12,7 +12,7 @@ class NewsModel {
     required this.title,
     required this.description,
      this.urlToImage,
-    required this.author,
+     this.author,
     required this.content,
     required this.publishedAt,
     required this.url,
