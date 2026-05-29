@@ -102,12 +102,12 @@ ThemeData primaryAppTheme = ThemeData(
       decorationColor: Color.fromARGB(255, 59, 55, 55),
       decorationThickness: 5,
       fontSize: 12,
-      color: Colors.black,
+      color: Colors.white,
       fontWeight: FontWeight.w400,
     ),
     labelLarge: TextStyle(
       fontSize: 20,
-      color: Colors.black,
+      color: Colors.white,
       fontWeight: FontWeight.w400,
     ),
     //? bpdy
@@ -123,10 +123,11 @@ ThemeData primaryAppTheme = ThemeData(
       color: Colors.black,
       fontWeight: FontWeight.bold,
     ),
+    //!
     bodyLarge: TextStyle(
-      fontSize: 28,
-      color: Colors.black,
-      fontWeight: FontWeight.w400,
+      fontSize: 40,
+      color: AppColors.primaryColor,
+      fontWeight: FontWeight.w700,
     ),
   ),
   //! Switch Theme

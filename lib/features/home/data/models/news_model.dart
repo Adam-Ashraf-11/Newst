@@ -2,7 +2,7 @@
 class NewsModel {
   final String title;
   final String description;
-  final String urlToImage;
+  final String? urlToImage;
   final String author;
   final String content;
   final String publishedAt;
@@ -11,7 +11,7 @@ class NewsModel {
   NewsModel({
     required this.title,
     required this.description,
-    required this.urlToImage,
+     this.urlToImage,
     required this.author,
     required this.content,
     required this.publishedAt,

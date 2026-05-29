@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-
 import 'package:newst_app/features/home/presentation/manager/home_controller.dart';
+import 'package:newst_app/features/home/presentation/views/components/trending_news.dart';
 import 'package:provider/provider.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
- static const routName = 'home';
-  
+  static const routName = 'home';
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<HomeController>(
@@ -14,27 +14,7 @@ class HomeView extends StatelessWidget {
       child: Consumer<HomeController>(
         builder: (BuildContext context, value, Widget? child) {
           return Scaffold(
-            body: (value.errorMessage?.isNotEmpty ?? false)
-                ? Center(child: Text(value.errorMessage!))
-                : value.everythingLoading
-                ? Center(child: CircularProgressIndicator())
-                : Column(
-                    children: [
-                      Expanded(
-                        child: ListView.builder(
-                          itemCount: value.topHeadlinesList.length,
-                          itemBuilder: (context, index) {
-                            return Center(
-                              child: Text(
-                                style: TextStyle(color: Colors.black),
-                                value.topHeadlinesList[index].title,
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
+            body:  Column(children: [TrendingNews()]),
           );
         },
       ),
