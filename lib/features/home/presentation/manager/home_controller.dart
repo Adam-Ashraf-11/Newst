@@ -13,6 +13,8 @@ class HomeController extends ChangeNotifier {
   List<NewsModel> topHeadlinesList = [];
   List<NewsModel> everythingList = [];
   ApiServices apiServices = ApiServices();
+      List<NewsModel> filteredList = [];
+
   void init() {
     getEverything();
     getTopHeadlines();
@@ -40,6 +42,11 @@ class HomeController extends ChangeNotifier {
     try {
       Map<String, dynamic> results = await apiServices.get(endPoints: ApiConfig.everything, parames: {'q': 'news'});
       everythingList = (results['articles'] as List).map((e) => NewsModel.fromJson(e)).toList();
+      filteredList = everythingList
+          .where(
+            (item) => item.urlToImage != null && item.urlToImage!.isNotEmpty && !item.urlToImage!.contains("npr.org"),
+          )
+          .toList();
       everythingStatus = RequestStatusEnum.loded;
     } catch (e) {
       errorMessage = e.toString();
