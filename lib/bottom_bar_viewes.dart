@@ -4,14 +4,15 @@ import 'package:newst_app/features/home/presentation/views/home_view.dart';
 import 'package:newst_app/features/profile/presentation/views/profile_view.dart';
 import 'package:newst_app/features/search/search_view.dart';
 
-class BootomBarViews extends StatefulWidget {
-  const BootomBarViews({super.key});
+class BottomBarViews extends StatefulWidget {
+  const BottomBarViews({super.key});
+  static const routName = 'bottomBar';
 
   @override
-  State<BootomBarViews> createState() => _BootomBarViewsState();
+  State<BottomBarViews> createState() => _BottomBarViewsState();
 }
 
-class _BootomBarViewsState extends State<BootomBarViews> {
+class _BottomBarViewsState extends State<BottomBarViews> {
   int currentIndex = 0;
   List<Widget> views = [
     HomeView(),
@@ -31,7 +32,7 @@ class _BootomBarViewsState extends State<BootomBarViews> {
          });
         },
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: 'Home'),
           BottomNavigationBarItem(
             icon: Icon(Icons.bookmark_border),
             label: 'Bookmark',

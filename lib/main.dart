@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newst_app/bottom_bar_viewes.dart';
 import 'package:newst_app/core/data_source/local_data/shared_preferences.dart';
 import 'package:newst_app/core/helper/ongenerate_route.dart';
 import 'package:newst_app/core/theme/primary_app_theme.dart';

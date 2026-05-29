@@ -42,7 +42,6 @@ class HomeController extends ChangeNotifier {
         endPoints: ApiConfig.everything,
         parames: {'q': 'news'},
       );
-
       everythingList = (results['articles'] as List)
           .map((e) => NewsModel.fromJson(e))
           .toList();

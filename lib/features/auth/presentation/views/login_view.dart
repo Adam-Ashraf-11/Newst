@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:newst_app/core/constant/app_colors.dart';
 import 'package:newst_app/core/widget/custom_eleveted_button.dart';
 import 'package:newst_app/core/widget/custom_text_form_feild.dart';
 import 'package:newst_app/features/auth/presentation/views/register_view.dart';

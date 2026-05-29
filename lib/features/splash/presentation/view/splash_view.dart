@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:newst_app/bottom_bar_viewes.dart';
 import 'package:newst_app/core/data_source/local_data/shared_config.dart';
 import 'package:newst_app/core/data_source/local_data/shared_preferences.dart';
 import 'package:newst_app/features/auth/presentation/views/login_view.dart';
-import 'package:newst_app/features/home/presentation/views/home_view.dart';
 import 'package:newst_app/features/onboarding/presentation/views/onboarding_view.dart';
 
 class SplashView extends StatefulWidget {
@@ -30,7 +30,7 @@ class _SplashViewState extends State<SplashView> {
       } else if (!isLoggedin) {
         Navigator.pushReplacementNamed(context, LoginView.routName);
       } else {
-        Navigator.pushReplacementNamed(context, HomeView.routName);
+        Navigator.pushReplacementNamed(context, BottomBarViews.routName);
       }
     });
   }

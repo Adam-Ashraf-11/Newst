@@ -83,8 +83,11 @@ class RegisterView extends StatelessWidget {
                 CustomTextFormFeild(
                   hint: '********',
                   validator: (value) {
-                    if (passwordController != confirmPasswordController) {
-                      return 'not password the same';
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your password';
+                    }
+                    if (value != passwordController.text) {
+                      return 'Passwords do not match';
                     } else {
                       return null;
                     }
