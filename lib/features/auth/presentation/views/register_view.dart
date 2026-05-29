@@ -1,18 +1,60 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:newst_app/bottom_bar_viewes.dart';
+import 'package:newst_app/core/data_source/local_data/shared_config.dart';
+import 'package:newst_app/core/data_source/local_data/shared_preferences.dart';
 import 'package:newst_app/core/widget/custom_eleveted_button.dart';
 import 'package:newst_app/core/widget/custom_text_form_feild.dart';
 import 'package:newst_app/features/auth/presentation/views/login_view.dart';
 import 'package:newst_app/features/auth/presentation/views/widgets/inkwell_an_account.dart';
 
-class RegisterView extends StatelessWidget {
-  RegisterView({super.key});
+class RegisterView extends StatefulWidget {
+  const RegisterView({super.key});
   static const routName = 'register';
+
+  @override
+  State<RegisterView> createState() => _RegisterViewState();
+}
+
+class _RegisterViewState extends State<RegisterView> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
   final GlobalKey<FormState> form = GlobalKey();
+  String? errorMessage;
+  bool isLoading = false;
+
+  void register() async {
+    setState(() {
+      errorMessage = null;
+      isLoading = true;
+    });
+    Future.delayed(Duration(seconds: 4));
+
+    String? savedEmail = PreferencesServer().getString(SharedConfig.cUserEmail);
+    if (savedEmail != null && savedEmail == emailController.text.trim()) {
+      setState(() {
+        errorMessage = 'Email already exists';
+        isLoading = false;
+      });
+    } else {
+      await PreferencesServer().setString(
+        SharedConfig.cUserEmail,
+        emailController.text.trim(),
+      );
+      await PreferencesServer().setString(
+        SharedConfig.cUserPassword,
+        passwordController.text.trim(),
+      );
+      await PreferencesServer().setBool(SharedConfig.cLogedin, true);
+      setState(() {
+        isLoading = false;
+      });
+    Navigator.pushNamedAndRemoveUntil(context, BottomBarViews.routName , (route) => false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,11 +144,16 @@ class RegisterView extends StatelessWidget {
                   textMessage: 'Already have an account?',
                 ),
                 Gap(40),
+                if (errorMessage != null)
+                  Text(errorMessage!, style: TextStyle(color: Colors.red)),
+                  isLoading ? Center(child: CircularProgressIndicator()) :
                 CustomElevetedButton(
                   onPressed: () {
-                    if (form.currentState!.validate()) {}
+                    if (form.currentState!.validate()) {
+                      register();
+                    }
                   },
-                  title: 'Register',
+                  title:  'Register',
                 ),
               ],
             ),

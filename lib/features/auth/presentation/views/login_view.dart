@@ -1,17 +1,65 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:newst_app/bottom_bar_viewes.dart';
+import 'package:newst_app/core/data_source/local_data/shared_config.dart';
+import 'package:newst_app/core/data_source/local_data/shared_preferences.dart';
 import 'package:newst_app/core/widget/custom_eleveted_button.dart';
 import 'package:newst_app/core/widget/custom_text_form_feild.dart';
 import 'package:newst_app/features/auth/presentation/views/register_view.dart';
 import 'package:newst_app/features/auth/presentation/views/widgets/inkwell_an_account.dart';
 
-class LoginView extends StatelessWidget {
+class LoginView extends StatefulWidget {
   LoginView({super.key});
   static const routName = 'login';
 
+  @override
+  State<LoginView> createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
   final TextEditingController emailController = TextEditingController();
+
   final TextEditingController passwordController = TextEditingController();
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  String? errorMessage;
+  bool isLoading = false;
+  void login()async {
+    setState(() {
+      errorMessage = null;
+      isLoading = true;
+    });
+    Future.delayed(Duration(seconds: 10));
+    String? savedEmail = PreferencesServer().getString(SharedConfig.cUserEmail);
+    String? savedPassword = PreferencesServer().getString(
+      SharedConfig.cUserPassword,
+    );
+
+    if (savedPassword == null && savedEmail == null) {
+      setState(() {
+        errorMessage = 'Please Register First';
+        isLoading = false;
+      });
+      return;
+    }
+    if (savedEmail != emailController.text ||
+        savedPassword != passwordController.text) {
+      setState(() {
+        errorMessage = 'Invalid Email or Password';
+        isLoading = false;
+      });
+      return;
+    }
+
+      await PreferencesServer().setBool(SharedConfig.cLogedin, true);
+      setState(() {
+        isLoading = false;
+      });
+
+    Navigator.pushNamedAndRemoveUntil(context, BottomBarViews.routName , (route) => false);
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,12 +131,17 @@ class LoginView extends StatelessWidget {
                   textMessage: 'Don\'t have an account?',
                 ),
                 Gap(40),
-                CustomElevetedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {}
-                  },
-                  title: 'Login',
-                ),
+                if (errorMessage != null) Text(errorMessage!, style: TextStyle(color: Colors.red),),
+                isLoading
+                    ? Center(child: CircularProgressIndicator())
+                    : CustomElevetedButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            login();
+                          }
+                        },
+                        title: 'Login',
+                      ),
               ],
             ),
           ),

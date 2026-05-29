@@ -37,18 +37,24 @@ ThemeData primaryAppTheme = ThemeData(
     fillColor: Colors.white,
     contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
     border: OutlineInputBorder(
-      borderSide: const BorderSide(color : Colors.white),
+      borderSide: const BorderSide(color: Colors.white),
     ),
     enabledBorder: OutlineInputBorder(
       borderSide: const BorderSide(color: Colors.white),
     ),
     focusedBorder: OutlineInputBorder(
-      borderSide: const BorderSide(color: Colors.white,),
+      borderSide: const BorderSide(color: Colors.white),
     ),
     errorBorder: OutlineInputBorder(
       borderSide: const BorderSide(color: Colors.white),
     ),
   ),
+  //! Progress Indicator Theme
+  progressIndicatorTheme: const ProgressIndicatorThemeData(
+    borderRadius: BorderRadius.all(Radius.circular(16)),
+    color: Colors.black,
+  ),
+
   //! Text Theme
   textTheme: const TextTheme(
     //?  title....
@@ -162,7 +168,7 @@ ThemeData primaryAppTheme = ThemeData(
     type: BottomNavigationBarType.fixed,
     selectedItemColor: AppColors.primaryColor,
     unselectedItemColor: Colors.black,
-    showUnselectedLabels: true
+    showUnselectedLabels: true,
   ),
 
   //! TextButton Theme

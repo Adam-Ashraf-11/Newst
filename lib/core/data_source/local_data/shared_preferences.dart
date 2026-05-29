@@ -32,4 +32,8 @@ class PreferencesServer {
   bool? getBool(String key) {
     return _sharedPreferences.getBool(key);
   }
+
+  Future<void> clear() async {
+    await _sharedPreferences.clear();
+  }
 }
