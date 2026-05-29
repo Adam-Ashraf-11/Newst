@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:newst_app/core/enums/request_status_enum.dart';
 import 'package:newst_app/features/home/presentation/manager/home_controller.dart';
+import 'package:newst_app/features/home/presentation/views/widgets/all_view_widget.dart';
 import 'package:newst_app/features/home/presentation/views/widgets/trending_view_card.dart';
 import 'package:provider/provider.dart';
 
@@ -11,7 +12,7 @@ class TrendingNews extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 370,
+      height: 310,
       child: Stack(
         children: [
           Image.asset('assets/images/bg_image.png', fit: BoxFit.cover),
@@ -20,29 +21,7 @@ class TrendingNews extends StatelessWidget {
             child: Column(
               children: [
                 Text(textAlign: TextAlign.center, 'Newst', style: Theme.of(context).textTheme.bodyLarge),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        textAlign: TextAlign.center,
-                        'Trending News',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                      Text(
-                        textAlign: TextAlign.center,
-                        'All View',
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          decorationColor: Colors.white,
-                          color: Colors.white,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                AllViewWidget(description: 'Trending News',),
                 Gap(10),
                 Padding(
                   padding: const EdgeInsets.only(left:4),
